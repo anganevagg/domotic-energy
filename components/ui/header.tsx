@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import MobileMenu from './mobile-menu'
-
+import Logo from '@/public/logo.jpeg'
+import Image from 'next/image'
 export default function Header() {
   return (
     <header className="absolute w-full z-30">
@@ -10,7 +11,7 @@ export default function Header() {
           <div className="shrink-0 mr-4">
             {/* Logo */}
             <Link href="/" className="block" aria-label="Cruip">
-              <img src="/logo.jpeg" alt="" width={150}/>
+              <Image src={Logo} alt="" width={150}/>
             </Link>
           </div>
 
