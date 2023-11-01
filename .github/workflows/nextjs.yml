@@ -10,12 +10,6 @@ on:
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
-  deployment:
-    types:
-        - created
-    branches:
-        - qa
-        - dev
   workflow_dispatch:
   
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -100,15 +94,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-  notify:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/http@v2
-              with:
-                url: https://mywebhook.com/deployment
-                method: POST
-                body: |
-                  {
-                    "deployment_environment": "${{ github.event.deployment.environment.name }}",
-                    "deployment_branch": "${{ github.event.deployment.branch }}"
-                  }
